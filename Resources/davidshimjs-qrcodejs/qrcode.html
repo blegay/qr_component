@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<title>Cross-Browser QRCode generator for Javascript</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script type="text/javascript" src="qrcode.min.js"></script>
+	</head>
+	<body style="background-color:lightgray">
+		<div id="qrcode"></div>
+
+		<script type="text/javascript">
+			var divqr = document.getElementById("qrcode");
+	
+			function getQRPicture(value, options) {
+				if(options===undefined) options ={width :200, height :200};
+				
+				var qrcode = new QRCode(divqr, options);
+			
+				qrcode.makeCode(value);
+		
+		        let canvas = divqr.getElementsByTagName("canvas").item(0)
+		        let base64text = canvas.toDataURL();
+
+				return base64text;
+			}
+
+		</script>
+	</body>
+</html>
